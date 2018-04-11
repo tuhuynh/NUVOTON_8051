@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        04/11/2018  16:07:48  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/11/2018  18:02:28  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -31,8 +31,8 @@ LINK MAP OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
             DATA    000CH     0004H     UNIT         ?DT?_INITIALUART1_TIMER3?COMMON
             DATA    0010H     0004H     UNIT         ?DT?_TIMER0_DELAY100US?DELAY
             DATA    0014H     0004H     UNIT         ?DT?_TIMER0_DELAY1MS?DELAY
-            DATA    0018H     0004H     UNIT         ?DT?_TIMER2_DELAY500US?DELAY
-            DATA    001CH     0004H     UNIT         ?DT?_TIMER3_DELAY100MS?DELAY
+            DATA    0018H     0004H     UNIT         ?DT?_TIMER1_DELAY10MS?DELAY
+            DATA    001CH     0004H     UNIT         ?DT?_TIMER2_DELAY500US?DELAY
             BIT     0020H.0   0000H.1   UNIT         ?BI?DELAY
                     0020H.1   0000H.7                *** GAP ***
             DATA    0021H     0004H     UNIT         ?DT?_TIMER3_DELAY10US?DELAY
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
             CODE    0404H     0008H     UNIT         ?PR?_SEND_DATA_TO_UART1?COMMON
 
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 2
 
 
 
@@ -73,9 +73,9 @@ SEGMENT                                      DATA_GROUP
   +--> ?PR?MAIN?TEST_N76E003
 
 ?PR?MAIN?TEST_N76E003                      -----    -----
-  +--> ?PR?_TIMER1_DELAY10MS?DELAY
+  +--> ?PR?_TIMER3_DELAY100MS?DELAY
 
-?PR?_TIMER1_DELAY10MS?DELAY                0025H    0004H
+?PR?_TIMER3_DELAY100MS?DELAY               0025H    0004H
 
 
 
@@ -98,36 +98,30 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00F8H         PUBLIC        SCON_1
-  B:0088H.5       PUBLIC        TF0
-  D:008CH         PUBLIC        TH0
-  D:008AH         PUBLIC        TL0
-  B:0088H.4       PUBLIC        TR0
   D:00E8H         PUBLIC        ADCCON0
   D:00C0H         PUBLIC        I2CON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:03C4H         LINE#         6
-  C:03C4H         LINE#         7
+  C:03C4H         LINE#         8
   C:03C4H         LINE#         9
   C:03C4H         LINE#         11
-  C:03C6H         LINE#         12
-  C:03D1H         LINE#         13
-  C:03D4H         LINE#         14
-  C:03D7H         LINE#         15
-  C:03D9H         LINE#         16
+  C:03C4H         LINE#         13
+  C:03C6H         LINE#         14
+  C:03D1H         LINE#         15
+  C:03D3H         LINE#         16
   C:03DEH         LINE#         17
   -------         ENDPROC       MAIN
   -------         ENDMOD        TEST_N76E003
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 3
-
-
 
   -------         MODULE        COMMON
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B1H         PUBLIC        P0M1
   D:00B3H         PUBLIC        P1M1
   D:00B2H         PUBLIC        P0M2
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 3
+
+
   D:0080H         PUBLIC        P0
   D:00B4H         PUBLIC        P1M2
   D:0090H         PUBLIC        P1
@@ -179,15 +173,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   C:03BFH         LINE#         41
   C:03C1H         LINE#         42
   C:03C3H         LINE#         43
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 4
-
-
   -------         ENDPROC       _INITIALUART0_TIMER1
   -------         PROC          _INITIALUART0_TIMER3
   D:0008H         SYMBOL        u32Baudrate
   C:00F5H         LINE#         45
   C:00FDH         LINE#         46
   C:00FDH         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 4
+
+
   C:0103H         LINE#         48
   C:0109H         LINE#         50
   C:010CH         LINE#         51
@@ -239,15 +233,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   D:0007H         SYMBOL        c
   -------         ENDDO         
   C:03FCH         LINE#         107
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 5
-
-
   C:03FCH         LINE#         108
   C:03FCH         LINE#         111
   C:03FFH         LINE#         112
   C:0401H         LINE#         113
   C:0403H         LINE#         114
   C:0403H         LINE#         115
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 5
+
+
   -------         ENDPROC       RECEIVE_DATA_FROM_UART1
   -------         PROC          _SEND_DATA_TO_UART1
   D:0007H         SYMBOL        c
@@ -299,15 +293,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   D:00C8H         PUBLIC        T2CON
   D:00C4H         PUBLIC        T3CON
   D:008EH         PUBLIC        CKCON
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 6
-
-
   D:00D0H         PUBLIC        PSW
   C:0210H         PUBLIC        _Timer3_Delay100ms
   -------         PROC          _TIMER0_DELAY100US
   D:0010H         SYMBOL        u32CNT
   C:02AAH         LINE#         22
   C:02B2H         LINE#         23
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 6
+
+
   C:02B2H         LINE#         24
   C:02B5H         LINE#         25
   C:02B8H         LINE#         26
@@ -341,7 +335,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   C:033FH         LINE#         52
   -------         ENDPROC       _TIMER0_DELAY1MS
   -------         PROC          _TIMER1_DELAY10MS
-  D:0025H         SYMBOL        u32CNT
+  D:0018H         SYMBOL        u32CNT
   C:0340H         LINE#         55
   C:0348H         LINE#         56
   C:0348H         LINE#         57
@@ -359,15 +353,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   C:038AH         LINE#         69
   -------         ENDPROC       _TIMER1_DELAY10MS
   -------         PROC          _TIMER2_DELAY500US
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 7
-
-
-  D:0018H         SYMBOL        u32CNT
+  D:001CH         SYMBOL        u32CNT
   C:01C2H         LINE#         71
   C:01CAH         LINE#         72
   C:01CAH         LINE#         73
   C:01CDH         LINE#         74
   C:01D0H         LINE#         75
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 7
+
+
   C:01D3H         LINE#         76
   C:01D5H         LINE#         77
   C:01E8H         LINE#         78
@@ -381,7 +375,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   C:020FH         LINE#         86
   -------         ENDPROC       _TIMER2_DELAY500US
   -------         PROC          _TIMER3_DELAY100MS
-  D:001CH         SYMBOL        u32CNT
+  D:0025H         SYMBOL        u32CNT
   C:0210H         LINE#         88
   C:0218H         LINE#         89
   C:0218H         LINE#         90
@@ -419,15 +413,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\test_gpio (TEST_N76E003)
   -------         MODULE        ?C_STARTUP
   C:03E0H         SEGMENT       ?C_C51STARTUP
   I:0029H         SEGMENT       ?STACK
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  16:07:48  PAGE 8
-
-
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
   N:0000H         SYMBOL        IBPSTACK
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2018  18:02:28  PAGE 8
+
+
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
   C:03E3H         SYMBOL        IDATALOOP

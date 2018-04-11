@@ -4,17 +4,16 @@
 #include "Common.h"
 #include "Delay.h"
 
+
 void main()
 {
 	
 	while(1){
 		
-		P00=1;
-		Timer1_Delay10ms(1);
-		TH0=10;
-		TL0=10;
-		TR0=1;
-		if(TF0==1) {TR0=0;}
+	P00=1;
+	Timer3_Delay100ms(5);
+	P00=0;
+	Timer3_Delay100ms(5);
 	}
 	
 }
