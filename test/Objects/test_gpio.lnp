@@ -1,0 +1,7 @@
+".\Objects\test_n76e003.obj",
+".\Objects\Common.obj",
+".\Objects\Delay.obj",
+".\Objects\STARTUP.obj" 
+TO ".\Objects\test_gpio" 
+PRINT(".\Listings\test_gpio.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 
