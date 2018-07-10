@@ -1,0 +1,963 @@
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Code\main.c BROWSE INCDIR(..\Include) DEFINE(FOSC_160000) DEBUG OBJECTEXTEN
+                    -D CODE PRINT(.\Output\main.lst) OBJECT(.\Output\main.obj)
+
+line level    source
+
+   1           //*******************************************************************************************************
+             -****
+   2          //  File Function: LORA Ra01 transmit using N76E003 SPI in Master mode 
+   3          //      HTTU - 2018
+   4          // ref: N76E003_BSP_Keil_C51_V1.0.5
+   5          //********************************************************************************************************
+             -***
+   6          #include "N76E003.h"
+   7          #include "SFR_Macro.h"
+   8          #include "Function_define.h"
+   9          #include "Common.h"
+  10          #include "Delay.h"
+  11          #include "main.h"
+  12          //********************************************************************************************************
+             -***
+  13          #include "main.h"
+  14          
+  15          #define LED1 P12 //status led
+  16          #define LED2 P13 //error led.
+  17          #define LORA_SS P15
+  18          
+  19          typedef uint32_t uint64_t[2];
+  20          int _implicitHeaderMode = 0;
+  21          /////prototype of function
+  22          void SPI_Initial(void);
+  23          uint8_t readRegister(uint8_t address);
+  24          void writeRegister(uint8_t address, uint8_t value);
+  25          void setFrequency(long frequency);
+  26          void setTxPower(int level);
+  27          void implicitHeaderMode();
+  28          void explicitHeaderMode();
+  29          void ERROR();
+  30          void loraBegin(long frequency);
+  31          int beginPacket(int implicitHeader);
+  32          int endPacket();
+  33          uint8_t loraWrite(const uint8_t *buffer, uint8_t size);
+  34          void loraSleep();
+  35          void loraIdle();
+  36          
+  37          ///////end of prototype ////////////////////
+  38          void main()
+  39          {       uint8_t value=0;
+  40   1              uint8_t st[10]={'H','E','L','L','O'};
+  41   1              Set_All_GPIO_Quasi_Mode;
+  42   1              P12_Quasi_Mode;   //led 1
+  43   1              P13_Quasi_Mode; //led 2 
+  44   1              SPI_Initial();
+  45   1              LORA_SS=1;
+  46   1              loraBegin(433);
+  47   1              
+  48   1              while(1)
+  49   1              {
+  50   2               beginPacket(0);
+  51   2               
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 2   
+
+  52   2               loraWrite("HELLO",5);
+  53   2               
+  54   2               endPacket();
+  55   2               
+  56   2               Timer0_Delay1ms(3000); 
+  57   2               LED1=LED1^0x1;
+  58   2              }
+  59   1      
+  60   1      }
+  61          
+  62          ///*********************spi init****************************************************************
+  63          void SPI_Initial(void)
+  64          {      
+  65   1              P15_Quasi_Mode;                                                                                                         
+  66   1              P10_Quasi_Mode;                                                                                                         // P10(SPCLK) Quasi mode
+  67   1              P00_Quasi_Mode;                                                                                                         // P00 (MOSI) Quasi mode
+  68   1          P01_Quasi_Mode;                                                                                                             // P22 (MISO) Quasi mode
+  69   1                
+  70   1          
+  71   1          set_DISMODF;                                // SS General purpose I/O ( No Mode Fault ) 
+  72   1          clr_SSOE;
+  73   1         
+  74   1          clr_LSBFE;                                  // MSB first         
+  75   1          clr_CPOL;                                   // The SPI clock is low in idle mode
+  76   1          clr_CPHA;                                   // The data is sample on the second edge of SPI clock 
+  77   1          set_MSTR;                                   // SPI in Master mode 
+  78   1          SPICLK_DIV2;                                                // Select SPI clock 
+  79   1          set_SPIEN;                                  // Enable SPI function 
+  80   1          clr_SPIF;
+  81   1      }
+  82          /******************************************************************************************
+  83          * error function
+  84          *
+  85          ******************************************************************************************
+  86          */
+  87          void ERROR()
+  88          {        //LED2 flash when system error.
+  89   1      while(1){
+  90   2              LED2=0;
+  91   2              Timer0_Delay1ms(500);
+  92   2              LED2=1;
+  93   2              Timer0_Delay1ms(500);
+  94   2              }
+  95   1      }
+  96          
+  97          
+  98          /******************************************************************************************
+  99          * transmit array
+ 100          *
+ 101          ******************************************************************************************
+ 102          */
+ 103          uint8_t loraWrite(const uint8_t *buffer, uint8_t size)
+ 104          {
+ 105   1              uint8_t i;
+ 106   1        int currentLength = readRegister(REG_PAYLOAD_LENGTH);
+ 107   1      
+ 108   1        // check size
+ 109   1        if ((currentLength + size) > MAX_PKT_LENGTH) {
+ 110   2          size = MAX_PKT_LENGTH - currentLength;
+ 111   2        }
+ 112   1      
+ 113   1        // write data
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 3   
+
+ 114   1        for (i = 0; i < size; i++) {
+ 115   2          writeRegister(REG_FIFO, buffer[i]);
+ 116   2        }
+ 117   1      
+ 118   1        // update length
+ 119   1        writeRegister(REG_PAYLOAD_LENGTH, currentLength + size);
+ 120   1      
+ 121   1        return size;
+ 122   1      }
+ 123          
+ 124          /******************************************************************************************
+ 125          * initial lora with specific frequency
+ 126          *
+ 127          ******************************************************************************************
+ 128          */
+ 129          void loraBegin(long frequency)
+ 130          {
+ 131   1                uint8_t value=0;
+ 132   1                value=readRegister(REG_VERSION)  ;
+ 133   1      
+ 134   1                if(value!=0x12) ERROR(); //0x12 is ID of RA01
+ 135   1                loraSleep();
+ 136   1                setFrequency(433E6);
+ 137   1                      writeRegister(REG_FIFO_TX_BASE_ADDR, 0); //
+ 138   1                      writeRegister(REG_FIFO_RX_BASE_ADDR, 0);
+ 139   1                      // set LNA boost
+ 140   1        writeRegister(REG_LNA, readRegister(REG_LNA) | 0x03);
+ 141   1      
+ 142   1        // set auto AGC
+ 143   1        writeRegister(REG_MODEM_CONFIG_3, 0x04);
+ 144   1         // set output power to 17 dBm
+ 145   1        setTxPower(14);
+ 146   1         // put in standby mode
+ 147   1        loraIdle();
+ 148   1      
+ 149   1      }
+*** WARNING C280 IN LINE 129 OF CODE\MAIN.C: 'frequency': unreferenced local variable
+ 150          /******************************************************************************************
+ 151          * read lora register.
+ 152          * to read sx1278 register:
+ 153          *       - first writing byte is the register address want to read.
+ 154          *       - second writing byte is default value 0;
+ 155          *       - read SPDR value return from MISO.
+ 156          ******************************************************************************************
+ 157          */
+ 158          uint8_t readRegister(uint8_t address)
+ 159          {
+ 160   1                      int i=0;
+ 161   1                      uint8_t readvalue=0;
+ 162   1                      LORA_SS=0;
+ 163   1                      clr_SPIF;
+ 164   1                      SPDR=address&0x7f;
+ 165   1                      while(!(SPSR&0x80)){}
+ 166   1                      clr_SPIF;
+ 167   1      
+ 168   1                      SPDR=0x00;
+ 169   1                      for(i=0;i<10;i++){}
+ 170   1                      while(!(SPSR&0x80)){}
+ 171   1                      clr_SPIF;
+ 172   1                      LORA_SS=1;
+ 173   1                      readvalue=SPDR;
+ 174   1                      return readvalue;
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 4   
+
+ 175   1      }
+ 176          
+ 177          /******************************************************************************************
+ 178          * write lora register.
+ 179          * to wire sx1278 register vith value:
+ 180          *       - first writing byte is the register address want to write.
+ 181          *       - second writing byte is the value want to write;
+ 182          *       
+ 183          ******************************************************************************************
+ 184          */
+ 185          void writeRegister(uint8_t address, uint8_t value)
+ 186          {
+ 187   1                      
+ 188   1                      LORA_SS=0;
+ 189   1                      clr_SPIF;
+ 190   1                      SPDR=(address|0x80);
+ 191   1                      while(!(SPSR&0x80)){}
+ 192   1                      clr_SPIF;
+ 193   1                      SPDR=value;
+ 194   1                      while(!(SPSR&0x80)){}
+ 195   1                      clr_SPIF;
+ 196   1                      LORA_SS=1;
+ 197   1      }
+ 198          
+ 199          /******************************************************************************************
+ 200          * write a string to FIFO SX1278
+ 201          *       
+ 202          ******************************************************************************************
+ 203          */
+ 204          uint8_t write(const uint8_t *buffer, uint8_t size)
+ 205          {
+ 206   1              uint8_t i;
+ 207   1              int currentLength = readRegister(REG_PAYLOAD_LENGTH);
+ 208   1       // check size
+ 209   1        if ((currentLength + size) > MAX_PKT_LENGTH) {
+ 210   2          size = MAX_PKT_LENGTH - currentLength;
+ 211   2        }
+ 212   1      
+ 213   1        // write data
+ 214   1        for (i = 0; i < size; i++) {
+ 215   2          writeRegister(REG_FIFO, buffer[i]);
+ 216   2        }
+ 217   1      
+ 218   1        // update length
+ 219   1        writeRegister(REG_PAYLOAD_LENGTH, currentLength + size);
+ 220   1      
+ 221   1        return size;
+ 222   1      }
+ 223          
+ 224          /******************************************************************************************
+ 225          * set operating frequency of LORA
+ 226          *       
+ 227          ******************************************************************************************
+ 228          */
+ 229          void setFrequency(long frequency)
+ 230          {
+ 231   1        
+ 232   1        //uint64_t frf = ((uint64_t)frequency << 19) / 32000000;
+ 233   1      
+ 234   1        //writeRegister(REG_FRF_MSB, (uint8_t)(frf >> 16));
+ 235   1        //writeRegister(REG_FRF_MID, (uint8_t)(frf >> 8));
+ 236   1        //writeRegister(REG_FRF_LSB, (uint8_t)(frf >> 0));
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 5   
+
+ 237   1        writeRegister(REG_FRF_LSB,0x0);
+ 238   1        writeRegister(REG_FRF_MID,0x40);
+ 239   1        writeRegister(REG_FRF_MSB,0x6C);
+ 240   1      
+ 241   1      
+ 242   1      }
+*** WARNING C280 IN LINE 229 OF CODE\MAIN.C: 'frequency': unreferenced local variable
+ 243          /******************************************************************************************
+ 244          * set transmit power
+ 245          *       
+ 246          ******************************************************************************************
+ 247          */
+ 248          void setTxPower(int level)
+ 249          {
+ 250   1      if (level < 2) {
+ 251   2            level = 2;
+ 252   2          } else if (level > 17) {
+ 253   2            level = 17;
+ 254   2          }
+ 255   1      
+ 256   1          writeRegister(REG_PA_CONFIG, PA_BOOST | (level - 2));
+ 257   1      }
+ 258          
+ 259          /******************************************************************************************
+ 260          * begin to send packet
+ 261          *       
+ 262          ******************************************************************************************
+ 263          */
+ 264          int beginPacket(int implicitHeader)
+ 265          {
+ 266   1          // put in standby mode
+ 267   1        loraIdle();
+ 268   1      
+ 269   1        if (implicitHeader) {
+ 270   2          implicitHeaderMode();
+ 271   2        } else {
+ 272   2          explicitHeaderMode();
+ 273   2        }
+ 274   1        
+ 275   1        // reset FIFO address and paload length
+ 276   1        writeRegister(REG_FIFO_ADDR_PTR, 0);
+ 277   1        writeRegister(REG_PAYLOAD_LENGTH, 0);
+ 278   1      
+ 279   1        return 1;
+ 280   1      }
+ 281          /******************************************************************************************
+ 282          * end to send process
+ 283          *       
+ 284          ******************************************************************************************
+ 285          */
+ 286          int endPacket()
+ 287          {
+ 288   1        // put in TX mode
+ 289   1        writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_TX);
+ 290   1         // wait for TX done
+ 291   1        while ((readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK) == 0) {}
+ 292   1         // clear IRQ's
+ 293   1        writeRegister(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
+ 294   1        return 1;
+ 295   1      }
+ 296          
+ 297          void explicitHeaderMode()
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 6   
+
+ 298          {
+ 299   1         writeRegister(REG_MODEM_CONFIG_1, readRegister(REG_MODEM_CONFIG_1) & 0xfe);
+ 300   1      }
+ 301          
+ 302          void implicitHeaderMode()
+ 303          {
+ 304   1         writeRegister(REG_MODEM_CONFIG_1, readRegister(REG_MODEM_CONFIG_1) | 0x01);
+ 305   1      }
+ 306          
+ 307          void loraIdle()
+ 308          {
+ 309   1        writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_STDBY);
+ 310   1      }
+ 311          
+ 312          void loraSleep()
+ 313          {
+ 314   1        writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_SLEEP);
+ 315   1      }
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 7   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 39
+0000 E4                CLR     A
+0001 F500        R     MOV     value,A
+                                           ; SOURCE LINE # 40
+0003 7800        R     MOV     R0,#LOW st
+0005 7C00        R     MOV     R4,#HIGH st
+0007 FD                MOV     R5,A
+0008 7BFF              MOV     R3,#0FFH
+000A 7A00        R     MOV     R2,#HIGH _?ix1000
+000C 7900        R     MOV     R1,#LOW _?ix1000
+000E FE                MOV     R6,A
+000F 7F0A              MOV     R7,#0AH
+0011 120000      E     LCALL   ?C?COPY
+                                           ; SOURCE LINE # 41
+0014 E4                CLR     A
+0015 F5B1              MOV     P0M1,A
+0017 F5B2              MOV     P0M2,A
+0019 F5B3              MOV     P1M1,A
+001B F5B4              MOV     P1M2,A
+001D F5AC              MOV     P3M1,A
+001F F5AD              MOV     P3M2,A
+                                           ; SOURCE LINE # 42
+0021 53B3FB            ANL     P1M1,#0FBH
+0024 53B4FB            ANL     P1M2,#0FBH
+                                           ; SOURCE LINE # 43
+0027 53B3F7            ANL     P1M1,#0F7H
+002A 53B4F7            ANL     P1M2,#0F7H
+                                           ; SOURCE LINE # 44
+002D 120000      R     LCALL   SPI_Initial
+                                           ; SOURCE LINE # 45
+0030 D295              SETB    P15
+                                           ; SOURCE LINE # 46
+0032 7FB1              MOV     R7,#0B1H
+0034 7E01              MOV     R6,#01H
+0036 7D00              MOV     R5,#00H
+0038 7C00              MOV     R4,#00H
+003A 120000      R     LCALL   _loraBegin
+003D         ?C0001:
+                                           ; SOURCE LINE # 48
+                                           ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 50
+003D E4                CLR     A
+003E FF                MOV     R7,A
+003F FE                MOV     R6,A
+0040 120000      R     LCALL   _beginPacket
+                                           ; SOURCE LINE # 52
+0043 7BFF              MOV     R3,#0FFH
+0045 7A00        R     MOV     R2,#HIGH ?SC_0
+0047 7900        R     MOV     R1,#LOW ?SC_0
+0049 7D05              MOV     R5,#05H
+004B 120000      R     LCALL   _loraWrite
+                                           ; SOURCE LINE # 54
+004E 120000      R     LCALL   endPacket
+                                           ; SOURCE LINE # 56
+0051 7FB8              MOV     R7,#0B8H
+0053 7E0B              MOV     R6,#0BH
+0055 7D00              MOV     R5,#00H
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 8   
+
+0057 7C00              MOV     R4,#00H
+0059 120000      E     LCALL   _Timer0_Delay1ms
+                                           ; SOURCE LINE # 57
+005C A292              MOV     C,P12
+005E B3                CPL     C
+005F 9292              MOV     P12,C
+                                           ; SOURCE LINE # 58
+0061 80DA              SJMP    ?C0001
+             ; FUNCTION main (END)
+
+             ; FUNCTION SPI_Initial (BEGIN)
+                                           ; SOURCE LINE # 63
+                                           ; SOURCE LINE # 64
+                                           ; SOURCE LINE # 65
+0000 53B3DF            ANL     P1M1,#0DFH
+0003 53B4DF            ANL     P1M2,#0DFH
+                                           ; SOURCE LINE # 66
+0006 53B3FE            ANL     P1M1,#0FEH
+0009 53B4FE            ANL     P1M2,#0FEH
+                                           ; SOURCE LINE # 67
+000C 53B1FE            ANL     P0M1,#0FEH
+000F 53B2FE            ANL     P0M2,#0FEH
+                                           ; SOURCE LINE # 68
+0012 53B1FD            ANL     P0M1,#0FDH
+0015 53B2FD            ANL     P0M2,#0FDH
+                                           ; SOURCE LINE # 71
+0018 43F408            ORL     SPSR,#08H
+                                           ; SOURCE LINE # 72
+001B 53F37F            ANL     SPCR,#07FH
+                                           ; SOURCE LINE # 74
+001E 53F3DF            ANL     SPCR,#0DFH
+                                           ; SOURCE LINE # 75
+0021 53F3F7            ANL     SPCR,#0F7H
+                                           ; SOURCE LINE # 76
+0024 53F3FB            ANL     SPCR,#0FBH
+                                           ; SOURCE LINE # 77
+0027 43F310            ORL     SPCR,#010H
+                                           ; SOURCE LINE # 78
+002A 53F3FE            ANL     SPCR,#0FEH
+002D 53F3FD            ANL     SPCR,#0FDH
+                                           ; SOURCE LINE # 79
+0030 43F340            ORL     SPCR,#040H
+                                           ; SOURCE LINE # 80
+0033 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 81
+0036 22                RET     
+             ; FUNCTION SPI_Initial (END)
+
+             ; FUNCTION ERROR (BEGIN)
+                                           ; SOURCE LINE # 87
+                                           ; SOURCE LINE # 88
+0000         ?C0005:
+                                           ; SOURCE LINE # 89
+                                           ; SOURCE LINE # 90
+0000 C293              CLR     P13
+                                           ; SOURCE LINE # 91
+0002 7FF4              MOV     R7,#0F4H
+0004 7E01              MOV     R6,#01H
+0006 7D00              MOV     R5,#00H
+0008 7C00              MOV     R4,#00H
+000A 120000      E     LCALL   _Timer0_Delay1ms
+                                           ; SOURCE LINE # 92
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 9   
+
+000D D293              SETB    P13
+                                           ; SOURCE LINE # 93
+000F 7FF4              MOV     R7,#0F4H
+0011 7E01              MOV     R6,#01H
+0013 7D00              MOV     R5,#00H
+0015 7C00              MOV     R4,#00H
+0017 120000      E     LCALL   _Timer0_Delay1ms
+                                           ; SOURCE LINE # 94
+001A 80E4              SJMP    ?C0005
+             ; FUNCTION ERROR (END)
+
+             ; FUNCTION _loraWrite (BEGIN)
+                                           ; SOURCE LINE # 103
+0000 8B00        R     MOV     buffer,R3
+0002 8A00        R     MOV     buffer+01H,R2
+0004 8900        R     MOV     buffer+02H,R1
+0006 8D00        R     MOV     size,R5
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 106
+0008 7F22              MOV     R7,#022H
+000A 120000      R     LCALL   _readRegister
+000D 750000      R     MOV     currentLength,#00H
+0010 8F00        R     MOV     currentLength+01H,R7
+                                           ; SOURCE LINE # 109
+0012 7E00              MOV     R6,#00H
+0014 E500        R     MOV     A,currentLength+01H
+0016 2500        R     ADD     A,size
+0018 FF                MOV     R7,A
+0019 EE                MOV     A,R6
+001A 3500        R     ADDC    A,currentLength
+001C FE                MOV     R6,A
+001D D3                SETB    C
+001E EF                MOV     A,R7
+001F 94FF              SUBB    A,#0FFH
+0021 EE                MOV     A,R6
+0022 6480              XRL     A,#080H
+0024 9480              SUBB    A,#080H
+0026 4006              JC      ?C0008
+                                           ; SOURCE LINE # 110
+0028 74FF              MOV     A,#0FFH
+002A 9500        R     SUBB    A,currentLength+01H
+002C F500        R     MOV     size,A
+                                           ; SOURCE LINE # 111
+002E         ?C0008:
+                                           ; SOURCE LINE # 114
+002E E4                CLR     A
+002F F500        R     MOV     i,A
+0031         ?C0009:
+0031 E500        R     MOV     A,i
+0033 C3                CLR     C
+0034 9500        R     SUBB    A,size
+0036 5010              JNC     ?C0010
+                                           ; SOURCE LINE # 115
+0038 AB00        R     MOV     R3,buffer
+003A AA00        R     MOV     R2,buffer+01H
+003C A900        R     MOV     R1,buffer+02H
+003E 850082      R     MOV     DPL,i
+0041 120000      R     LCALL   L?0049
+                                           ; SOURCE LINE # 116
+0044 0500        R     INC     i
+0046 80E9              SJMP    ?C0009
+0048         ?C0010:
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 10  
+
+                                           ; SOURCE LINE # 119
+0048 E500        R     MOV     A,size
+004A 2500        R     ADD     A,currentLength+01H
+004C FD                MOV     R5,A
+004D 7F22              MOV     R7,#022H
+004F 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 121
+0052 AF00        R     MOV     R7,size
+                                           ; SOURCE LINE # 122
+0054         ?C0012:
+0054 22                RET     
+             ; FUNCTION _loraWrite (END)
+
+             ; FUNCTION _loraBegin (BEGIN)
+                                           ; SOURCE LINE # 129
+0000 8F00        R     MOV     frequency+03H,R7
+0002 8E00        R     MOV     frequency+02H,R6
+0004 8D00        R     MOV     frequency+01H,R5
+0006 8C00        R     MOV     frequency,R4
+                                           ; SOURCE LINE # 130
+                                           ; SOURCE LINE # 131
+;---- Variable 'value' assigned to Register 'R7' ----
+0008 E4                CLR     A
+                                           ; SOURCE LINE # 132
+0009 7F42              MOV     R7,#042H
+000B 120000      R     LCALL   _readRegister
+                                           ; SOURCE LINE # 134
+000E EF                MOV     A,R7
+000F 6412              XRL     A,#012H
+0011 6003              JZ      ?C0013
+0013 120000      R     LCALL   ERROR
+0016         ?C0013:
+                                           ; SOURCE LINE # 135
+0016 120000      R     LCALL   loraSleep
+                                           ; SOURCE LINE # 136
+0019 7F40              MOV     R7,#040H
+001B 7E0E              MOV     R6,#0EH
+001D 7DCF              MOV     R5,#0CFH
+001F 7C19              MOV     R4,#019H
+0021 120000      R     LCALL   _setFrequency
+                                           ; SOURCE LINE # 137
+0024 E4                CLR     A
+0025 FD                MOV     R5,A
+0026 7F0E              MOV     R7,#0EH
+0028 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 138
+002B E4                CLR     A
+002C FD                MOV     R5,A
+002D 7F0F              MOV     R7,#0FH
+002F 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 140
+0032 7F0C              MOV     R7,#0CH
+0034 120000      R     LCALL   _readRegister
+0037 EF                MOV     A,R7
+0038 4403              ORL     A,#03H
+003A FD                MOV     R5,A
+003B 7F0C              MOV     R7,#0CH
+003D 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 143
+0040 7D04              MOV     R5,#04H
+0042 7F26              MOV     R7,#026H
+0044 120000      R     LCALL   _writeRegister
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 11  
+
+                                           ; SOURCE LINE # 145
+0047 7F0E              MOV     R7,#0EH
+0049 7E00              MOV     R6,#00H
+004B 120000      R     LCALL   _setTxPower
+                                           ; SOURCE LINE # 147
+004E 020000      R     LJMP    loraIdle
+             ; FUNCTION _loraBegin (END)
+
+             ; FUNCTION _readRegister (BEGIN)
+                                           ; SOURCE LINE # 158
+;---- Variable 'address' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 159
+                                           ; SOURCE LINE # 160
+;---- Variable 'i' assigned to Register 'R4/R5' ----
+0000 E4                CLR     A
+0001 FD                MOV     R5,A
+0002 FC                MOV     R4,A
+                                           ; SOURCE LINE # 161
+;---- Variable 'readvalue' assigned to Register 'R6' ----
+0003 FE                MOV     R6,A
+                                           ; SOURCE LINE # 162
+0004 C295              CLR     P15
+                                           ; SOURCE LINE # 163
+0006 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 164
+0009 EF                MOV     A,R7
+000A 547F              ANL     A,#07FH
+000C F5F5              MOV     SPDR,A
+000E         ?C0015:
+                                           ; SOURCE LINE # 165
+000E E5F4              MOV     A,SPSR
+0010 30E7FB            JNB     ACC.7,?C0015
+0013         ?C0016:
+                                           ; SOURCE LINE # 166
+0013 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 168
+0016 E4                CLR     A
+0017 F5F5              MOV     SPDR,A
+                                           ; SOURCE LINE # 169
+0019 FC                MOV     R4,A
+001A FD                MOV     R5,A
+001B         ?C0017:
+001B 0D                INC     R5
+001C BD0001            CJNE    R5,#00H,?C0048
+001F 0C                INC     R4
+0020         ?C0048:
+0020 ED                MOV     A,R5
+0021 640A              XRL     A,#0AH
+0023 4C                ORL     A,R4
+0024 70F5              JNZ     ?C0017
+0026         ?C0020:
+                                           ; SOURCE LINE # 170
+0026 E5F4              MOV     A,SPSR
+0028 30E7FB            JNB     ACC.7,?C0020
+002B         ?C0021:
+                                           ; SOURCE LINE # 171
+002B 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 172
+002E D295              SETB    P15
+                                           ; SOURCE LINE # 173
+0030 AEF5              MOV     R6,SPDR
+                                           ; SOURCE LINE # 174
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 12  
+
+0032 AF06              MOV     R7,AR6
+                                           ; SOURCE LINE # 175
+0034         ?C0022:
+0034 22                RET     
+             ; FUNCTION _readRegister (END)
+
+             ; FUNCTION L?0049 (BEGIN)
+0000 758300            MOV     DPH,#00H
+0003 120000      E     LCALL   ?C?CLDOPTR
+0006 FD                MOV     R5,A
+0007 E4                CLR     A
+0008 FF                MOV     R7,A
+             ; FUNCTION _writeRegister (BEGIN)
+                                           ; SOURCE LINE # 185
+;---- Variable 'value' assigned to Register 'R5' ----
+;---- Variable 'address' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 186
+                                           ; SOURCE LINE # 188
+0009 C295              CLR     P15
+                                           ; SOURCE LINE # 189
+000B 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 190
+000E EF                MOV     A,R7
+000F 4480              ORL     A,#080H
+0011 F5F5              MOV     SPDR,A
+0013         ?C0023:
+                                           ; SOURCE LINE # 191
+0013 E5F4              MOV     A,SPSR
+0015 30E7FB            JNB     ACC.7,?C0023
+0018         ?C0024:
+                                           ; SOURCE LINE # 192
+0018 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 193
+001B 8DF5              MOV     SPDR,R5
+001D         ?C0025:
+                                           ; SOURCE LINE # 194
+001D E5F4              MOV     A,SPSR
+001F 30E7FB            JNB     ACC.7,?C0025
+0022         ?C0026:
+                                           ; SOURCE LINE # 195
+0022 53F47F            ANL     SPSR,#07FH
+                                           ; SOURCE LINE # 196
+0025 D295              SETB    P15
+                                           ; SOURCE LINE # 197
+0027 22                RET     
+             ; FUNCTION _writeRegister (END)
+
+             ; FUNCTION _write (BEGIN)
+                                           ; SOURCE LINE # 204
+0000 8B00        R     MOV     buffer,R3
+0002 8A00        R     MOV     buffer+01H,R2
+0004 8900        R     MOV     buffer+02H,R1
+0006 8D00        R     MOV     size,R5
+                                           ; SOURCE LINE # 205
+                                           ; SOURCE LINE # 207
+0008 7F22              MOV     R7,#022H
+000A 120000      R     LCALL   _readRegister
+000D 750000      R     MOV     currentLength,#00H
+0010 8F00        R     MOV     currentLength+01H,R7
+                                           ; SOURCE LINE # 209
+0012 7E00              MOV     R6,#00H
+0014 E500        R     MOV     A,currentLength+01H
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 13  
+
+0016 2500        R     ADD     A,size
+0018 FF                MOV     R7,A
+0019 EE                MOV     A,R6
+001A 3500        R     ADDC    A,currentLength
+001C FE                MOV     R6,A
+001D D3                SETB    C
+001E EF                MOV     A,R7
+001F 94FF              SUBB    A,#0FFH
+0021 EE                MOV     A,R6
+0022 6480              XRL     A,#080H
+0024 9480              SUBB    A,#080H
+0026 4006              JC      ?C0028
+                                           ; SOURCE LINE # 210
+0028 74FF              MOV     A,#0FFH
+002A 9500        R     SUBB    A,currentLength+01H
+002C F500        R     MOV     size,A
+                                           ; SOURCE LINE # 211
+002E         ?C0028:
+                                           ; SOURCE LINE # 214
+;---- Variable 'i' assigned to Register 'R6' ----
+002E E4                CLR     A
+002F FE                MOV     R6,A
+0030         ?C0029:
+0030 EE                MOV     A,R6
+0031 C3                CLR     C
+0032 9500        R     SUBB    A,size
+0034 500E              JNC     ?C0030
+                                           ; SOURCE LINE # 215
+0036 AB00        R     MOV     R3,buffer
+0038 AA00        R     MOV     R2,buffer+01H
+003A A900        R     MOV     R1,buffer+02H
+003C 8E82              MOV     DPL,R6
+003E 120000      R     LCALL   L?0049
+                                           ; SOURCE LINE # 216
+0041 0E                INC     R6
+0042 80EC              SJMP    ?C0029
+0044         ?C0030:
+                                           ; SOURCE LINE # 219
+0044 E500        R     MOV     A,size
+0046 2500        R     ADD     A,currentLength+01H
+0048 FD                MOV     R5,A
+0049 7F22              MOV     R7,#022H
+004B 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 221
+004E AF00        R     MOV     R7,size
+                                           ; SOURCE LINE # 222
+0050         ?C0032:
+0050 22                RET     
+             ; FUNCTION _write (END)
+
+             ; FUNCTION _setFrequency (BEGIN)
+                                           ; SOURCE LINE # 229
+0000 8F00        R     MOV     frequency+03H,R7
+0002 8E00        R     MOV     frequency+02H,R6
+0004 8D00        R     MOV     frequency+01H,R5
+0006 8C00        R     MOV     frequency,R4
+                                           ; SOURCE LINE # 230
+                                           ; SOURCE LINE # 237
+0008 E4                CLR     A
+0009 FD                MOV     R5,A
+000A 7F08              MOV     R7,#08H
+000C 120000      R     LCALL   _writeRegister
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 14  
+
+                                           ; SOURCE LINE # 238
+000F 7D40              MOV     R5,#040H
+0011 1F                DEC     R7
+0012 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 239
+0015 7D6C              MOV     R5,#06CH
+0017 1F                DEC     R7
+0018 020000      R     LJMP    _writeRegister
+             ; FUNCTION _setFrequency (END)
+
+             ; FUNCTION _setTxPower (BEGIN)
+                                           ; SOURCE LINE # 248
+;---- Variable 'level' assigned to Register 'R6/R7' ----
+                                           ; SOURCE LINE # 249
+                                           ; SOURCE LINE # 250
+0000 C3                CLR     C
+0001 EF                MOV     A,R7
+0002 9402              SUBB    A,#02H
+0004 EE                MOV     A,R6
+0005 6480              XRL     A,#080H
+0007 9480              SUBB    A,#080H
+0009 5006              JNC     ?C0034
+                                           ; SOURCE LINE # 251
+000B 7E00              MOV     R6,#00H
+000D 7F02              MOV     R7,#02H
+                                           ; SOURCE LINE # 252
+000F 800F              SJMP    ?C0035
+0011         ?C0034:
+0011 D3                SETB    C
+0012 EF                MOV     A,R7
+0013 9411              SUBB    A,#011H
+0015 EE                MOV     A,R6
+0016 6480              XRL     A,#080H
+0018 9480              SUBB    A,#080H
+001A 4004              JC      ?C0035
+                                           ; SOURCE LINE # 253
+001C 7E00              MOV     R6,#00H
+001E 7F11              MOV     R7,#011H
+                                           ; SOURCE LINE # 254
+0020         ?C0035:
+                                           ; SOURCE LINE # 256
+0020 EF                MOV     A,R7
+0021 24FE              ADD     A,#0FEH
+0023 4480              ORL     A,#080H
+0025 FD                MOV     R5,A
+0026 7F09              MOV     R7,#09H
+0028 020000      R     LJMP    _writeRegister
+             ; FUNCTION _setTxPower (END)
+
+             ; FUNCTION _beginPacket (BEGIN)
+                                           ; SOURCE LINE # 264
+0000 8E00        R     MOV     implicitHeader,R6
+0002 8F00        R     MOV     implicitHeader+01H,R7
+                                           ; SOURCE LINE # 265
+                                           ; SOURCE LINE # 267
+0004 120000      R     LCALL   loraIdle
+                                           ; SOURCE LINE # 269
+0007 E500        R     MOV     A,implicitHeader+01H
+0009 4500        R     ORL     A,implicitHeader
+000B 6005              JZ      ?C0038
+                                           ; SOURCE LINE # 270
+000D 120000      R     LCALL   implicitHeaderMode
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 15  
+
+                                           ; SOURCE LINE # 271
+0010 8003              SJMP    ?C0039
+0012         ?C0038:
+                                           ; SOURCE LINE # 272
+0012 120000      R     LCALL   explicitHeaderMode
+                                           ; SOURCE LINE # 273
+0015         ?C0039:
+                                           ; SOURCE LINE # 276
+0015 E4                CLR     A
+0016 FD                MOV     R5,A
+0017 7F0D              MOV     R7,#0DH
+0019 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 277
+001C 7F22              MOV     R7,#022H
+001E 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 279
+0021 7E00              MOV     R6,#00H
+0023 7F01              MOV     R7,#01H
+                                           ; SOURCE LINE # 280
+0025         ?C0040:
+0025 22                RET     
+             ; FUNCTION _beginPacket (END)
+
+             ; FUNCTION endPacket (BEGIN)
+                                           ; SOURCE LINE # 286
+                                           ; SOURCE LINE # 287
+                                           ; SOURCE LINE # 289
+0000 7D83              MOV     R5,#083H
+0002 7F01              MOV     R7,#01H
+0004 120000      R     LCALL   _writeRegister
+0007         ?C0041:
+                                           ; SOURCE LINE # 291
+0007 7F12              MOV     R7,#012H
+0009 120000      R     LCALL   _readRegister
+000C EF                MOV     A,R7
+000D 30E3F7            JNB     ACC.3,?C0041
+0010         ?C0042:
+                                           ; SOURCE LINE # 293
+0010 7D08              MOV     R5,#08H
+0012 7F12              MOV     R7,#012H
+0014 120000      R     LCALL   _writeRegister
+                                           ; SOURCE LINE # 294
+0017 7E00              MOV     R6,#00H
+0019 7F01              MOV     R7,#01H
+                                           ; SOURCE LINE # 295
+001B         ?C0043:
+001B 22                RET     
+             ; FUNCTION endPacket (END)
+
+             ; FUNCTION explicitHeaderMode (BEGIN)
+                                           ; SOURCE LINE # 297
+                                           ; SOURCE LINE # 298
+                                           ; SOURCE LINE # 299
+0000 7F1D              MOV     R7,#01DH
+0002 120000      R     LCALL   _readRegister
+0005 EF                MOV     A,R7
+0006 54FE              ANL     A,#0FEH
+0008 FD                MOV     R5,A
+0009 7F1D              MOV     R7,#01DH
+000B 020000      R     LJMP    _writeRegister
+             ; FUNCTION explicitHeaderMode (END)
+
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 16  
+
+             ; FUNCTION implicitHeaderMode (BEGIN)
+                                           ; SOURCE LINE # 302
+                                           ; SOURCE LINE # 303
+                                           ; SOURCE LINE # 304
+0000 7F1D              MOV     R7,#01DH
+0002 120000      R     LCALL   _readRegister
+0005 EF                MOV     A,R7
+0006 4401              ORL     A,#01H
+0008 FD                MOV     R5,A
+0009 7F1D              MOV     R7,#01DH
+000B 020000      R     LJMP    _writeRegister
+             ; FUNCTION implicitHeaderMode (END)
+
+             ; FUNCTION loraIdle (BEGIN)
+                                           ; SOURCE LINE # 307
+                                           ; SOURCE LINE # 308
+                                           ; SOURCE LINE # 309
+0000 7D81              MOV     R5,#081H
+0002 7F01              MOV     R7,#01H
+0004 020000      R     LJMP    _writeRegister
+             ; FUNCTION loraIdle (END)
+
+             ; FUNCTION loraSleep (BEGIN)
+                                           ; SOURCE LINE # 312
+                                           ; SOURCE LINE # 313
+                                           ; SOURCE LINE # 314
+0000 7D80              MOV     R5,#080H
+0002 7F01              MOV     R7,#01H
+0004 020000      R     LJMP    _writeRegister
+             ; FUNCTION loraSleep (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    700    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2      34
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

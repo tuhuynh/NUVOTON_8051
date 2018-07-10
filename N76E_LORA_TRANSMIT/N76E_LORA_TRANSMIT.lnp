@@ -1,0 +1,7 @@
+"main.obj",
+".\Common.obj",
+".\Delay.obj",
+".\STARTUP.obj" 
+TO "N76E_LORA_TRANSMIT" 
+RAMSIZE(256) 
+DISABLEWARNING (16) 

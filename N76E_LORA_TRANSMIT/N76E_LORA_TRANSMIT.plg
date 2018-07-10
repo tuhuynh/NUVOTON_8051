@@ -1,0 +1,216 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\httu\Documents\N76E003\N76E_LORA_TRANSMIT\N76E_LORA_TRANSMIT.uvproj
+Project File Date:  07/06/2018
+
+<h2>Output:</h2>
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(58): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+"N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(58): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+"N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(58): warning C280: 'address': unreferenced local variable
+compiling Common.c...
+compiling Delay.c...
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+"N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(58): warning C280: 'address': unreferenced local variable
+compiling Common.c...
+compiling Delay.c...
+assembling STARTUP.A51...
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+"N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(58): warning C280: 'address': unreferenced local variable
+compiling Common.c...
+compiling Delay.c...
+assembling STARTUP.A51...
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(56): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(56): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(56): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1213
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1213 bytes programmed.
+Flash Verify Done: 1213 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1211
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1211 bytes programmed.
+Flash Verify Done: 1211 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x003E
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x0013
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x0006
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x0047
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x0001
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x0022
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+*** Error: Flash Verify Failed at 0x002F
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.

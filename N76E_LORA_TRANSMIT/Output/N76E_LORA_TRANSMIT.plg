@@ -1,0 +1,627 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\httu\Documents\N76E003\N76E_LORA_TRANSMIT\N76E_LORA_TRANSMIT.uvproj
+Project File Date:  07/09/2018
+
+<h2>Output:</h2>
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(57): warning C280: 'address': unreferenced local variable
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 1 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=43.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=42.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=42.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=42.1 xdata=0 code=1194
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1194 bytes programmed.
+Flash Verify Done: 1194 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=42.1 xdata=0 code=1200
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 1200 bytes programmed.
+Flash Verify Done: 1200 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(104): error C272: '__asm' requires src-control to be active
+CODE\MAIN.C(105): error C272: '__asm' requires src-control to be active
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=44.1 xdata=0 code=1236
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(124): error C141: syntax error near 'size_t'
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C141: syntax error near ')'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(124): error C141: syntax error near 'uint8_t'
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C202: 'i': undefined identifier
+CODE\MAIN.C(124): error C141: syntax error near ')'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=50.1 xdata=0 code=1371
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+linking...
+Program Size: data=50.1 xdata=0 code=1371
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C206: 'setFrequency': missing function-prototype
+CODE\MAIN.C(83): error C267: 'setFrequency': requires ANSI-style prototype
+CODE\MAIN.C(167): error C231: 'setFrequency': redefinition
+CODE\MAIN.C(169): error C202: 'uint64_t': undefined identifier
+CODE\MAIN.C(169): error C141: syntax error near 'frf'
+CODE\MAIN.C(169): error C141: syntax error near 'frequency'
+CODE\MAIN.C(169): error C141: syntax error near ')'
+CODE\MAIN.C(171): error C202: 'frf': undefined identifier
+CODE\MAIN.C(172): error C202: 'frf': undefined identifier
+CODE\MAIN.C(173): error C202: 'frf': undefined identifier
+CODE\MAIN.C(174): error C231: 'setFrequency': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+Code\main.c(14): warning C318: can't open file 'stdint.h'
+CODE\MAIN.C(84): warning C206: 'setFrequency': missing function-prototype
+CODE\MAIN.C(84): error C267: 'setFrequency': requires ANSI-style prototype
+CODE\MAIN.C(168): error C231: 'setFrequency': redefinition
+CODE\MAIN.C(170): error C202: 'uint64_t': undefined identifier
+CODE\MAIN.C(170): error C141: syntax error near 'frf'
+CODE\MAIN.C(170): error C141: syntax error near 'frequency'
+CODE\MAIN.C(170): error C141: syntax error near ')'
+CODE\MAIN.C(172): error C202: 'frf': undefined identifier
+CODE\MAIN.C(173): error C202: 'frf': undefined identifier
+CODE\MAIN.C(174): error C202: 'frf': undefined identifier
+CODE\MAIN.C(175): error C231: 'setFrequency': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+Code\main.c(14): warning C318: can't open file 'stdint.h'
+CODE\MAIN.C(84): warning C206: 'setFrequency': missing function-prototype
+CODE\MAIN.C(84): error C267: 'setFrequency': requires ANSI-style prototype
+CODE\MAIN.C(168): error C231: 'setFrequency': redefinition
+CODE\MAIN.C(170): error C202: 'uint64_t': undefined identifier
+CODE\MAIN.C(170): error C141: syntax error near 'frequency'
+CODE\MAIN.C(170): error C141: syntax error near ')'
+CODE\MAIN.C(175): error C231: 'setFrequency': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+Code\main.c(14): warning C318: can't open file 'stdint.h'
+CODE\MAIN.C(84): warning C206: 'setFrequency': missing function-prototype
+CODE\MAIN.C(84): error C267: 'setFrequency': requires ANSI-style prototype
+CODE\MAIN.C(168): error C231: 'setFrequency': redefinition
+CODE\MAIN.C(170): error C202: 'uint64_t': undefined identifier
+CODE\MAIN.C(170): error C141: syntax error near 'frf'
+CODE\MAIN.C(170): error C141: syntax error near 'frequency'
+CODE\MAIN.C(170): error C141: syntax error near ')'
+CODE\MAIN.C(172): error C202: 'frf': undefined identifier
+CODE\MAIN.C(173): error C202: 'frf': undefined identifier
+CODE\MAIN.C(174): error C202: 'frf': undefined identifier
+CODE\MAIN.C(175): error C231: 'setFrequency': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+Code\main.c(14): warning C318: can't open file 'stdint.h'
+CODE\MAIN.C(18): error C129: missing ';' before 'uint64_t'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+Code\main.c(14): warning C318: can't open file 'stdint.h'
+CODE\MAIN.C(19): error C129: missing ';' before 'uint64_t'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(19): error C129: missing ';' before 'uint64_t'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(19): error C129: missing ';' before 'uint64_t'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(87): warning C206: 'setFrequency': missing function-prototype
+CODE\MAIN.C(87): error C267: 'setFrequency': requires ANSI-style prototype
+CODE\MAIN.C(171): error C231: 'setFrequency': redefinition
+CODE\MAIN.C(183): error C231: 'setFrequency': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(82): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(170): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=58.1 xdata=0 code=1459
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(82): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(177): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=58.1 xdata=0 code=1494
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(96): warning C206: 'setTxPower': missing function-prototype
+CODE\MAIN.C(96): error C267: 'setTxPower': requires ANSI-style prototype
+CODE\MAIN.C(195): error C231: 'setTxPower': redefinition
+CODE\MAIN.C(203): error C231: 'setTxPower': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(180): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=58.1 xdata=0 code=1538
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(180): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C206: 'implicitHeaderMode': missing function-prototype
+CODE\MAIN.C(221): warning C206: 'explicitHeaderMode': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  IMPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  EXPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  IMPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+    ADDRESS: 05B0H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  EXPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+    ADDRESS: 05B5H
+Program Size: data=58.1 xdata=0 code=1567
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 8 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(180): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C206: 'implicitHeaderMode': missing function-prototype
+CODE\MAIN.C(221): warning C206: 'explicitHeaderMode': missing function-prototype
+CODE\MAIN.C(235): error C129: missing ';' before ':'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(180): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C206: 'implicitHeaderMode': missing function-prototype
+CODE\MAIN.C(221): warning C206: 'explicitHeaderMode': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  IMPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  EXPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  IMPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+    ADDRESS: 05B0H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  EXPLICITHEADERMODE
+    MODULE:  .\Output\main.obj (MAIN)
+    ADDRESS: 05B5H
+Program Size: data=58.1 xdata=0 code=1595
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 8 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(83): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(180): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): error C202: undefined identifier
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(84): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(181): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(222): warning C206: 'explicitHeaderMode': missing function-prototype
+CODE\MAIN.C(248): error C231: 'explicitHeaderMode': redefinition
+CODE\MAIN.C(252): error C231: 'explicitHeaderMode': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(85): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(182): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(223): warning C206: 'explicitHeaderMode': missing function-prototype
+CODE\MAIN.C(249): error C231: 'explicitHeaderMode': redefinition
+CODE\MAIN.C(253): error C231: 'explicitHeaderMode': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(85): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(182): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=60.1 xdata=0 code=1767
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(86): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(183): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=60.1 xdata=0 code=1767
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(38): error C141: syntax error near 'uint8_t'
+CODE\MAIN.C(38): error C202: 'st': undefined identifier
+CODE\MAIN.C(38): error C141: syntax error near '{'
+CODE\MAIN.C(38): error C141: syntax error near '}'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(38): error C141: syntax error near 'int'
+CODE\MAIN.C(38): error C202: 'st': undefined identifier
+CODE\MAIN.C(38): error C141: syntax error near '{'
+CODE\MAIN.C(38): error C141: syntax error near '}'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(35): error C141: syntax error near 'P0M1'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(42): warning C206: 'beginPacket': missing function-prototype
+CODE\MAIN.C(43): warning C206: 'write': missing function-prototype
+CODE\MAIN.C(43): error C267: 'write': requires ANSI-style prototype
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(45): warning C209: '_beginPacket': too few actual parameters
+CODE\MAIN.C(46): warning C206: 'write': missing function-prototype
+CODE\MAIN.C(46): error C267: 'write': requires ANSI-style prototype
+CODE\MAIN.C(96): error C231: 'write': redefinition
+CODE\MAIN.C(105): error C141: syntax error near 'size_t'
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C141: syntax error near ')'
+CODE\MAIN.C(113): error C231: 'write': redefinition
+CODE\MAIN.C(193): error C231: 'write': redefinition
+CODE\MAIN.C(210): error C231: 'write': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(46): warning C206: 'write': missing function-prototype
+CODE\MAIN.C(46): error C267: 'write': requires ANSI-style prototype
+CODE\MAIN.C(96): error C231: 'write': redefinition
+CODE\MAIN.C(105): error C141: syntax error near 'size_t'
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C141: syntax error near ')'
+CODE\MAIN.C(113): error C231: 'write': redefinition
+CODE\MAIN.C(193): error C231: 'write': redefinition
+CODE\MAIN.C(210): error C231: 'write': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(46): warning C206: 'write': missing function-prototype
+CODE\MAIN.C(46): error C267: 'write': requires ANSI-style prototype
+CODE\MAIN.C(105): error C141: syntax error near 'size_t'
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C202: 'i': undefined identifier
+CODE\MAIN.C(105): error C141: syntax error near ')'
+CODE\MAIN.C(193): error C231: 'write': redefinition
+CODE\MAIN.C(210): error C231: 'write': redefinition
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(106): error C141: syntax error near 'size_t'
+CODE\MAIN.C(106): error C202: 'i': undefined identifier
+CODE\MAIN.C(106): error C202: 'i': undefined identifier
+CODE\MAIN.C(106): error C202: 'i': undefined identifier
+CODE\MAIN.C(106): error C141: syntax error near ')'
+Target not created
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(122): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2139
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(122): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2139
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(122): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(219): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2150
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(123): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(220): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2152
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(123): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(220): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2155
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2155 bytes programmed.
+Flash Verify Done: 2155 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(124): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(221): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(124): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(221): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(125): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(222): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(126): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(223): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(127): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(224): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2157
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2157 bytes programmed.
+Flash Verify Done: 2157 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(127): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(224): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2137
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2137 bytes programmed.
+Flash Verify Done: 2137 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(127): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(224): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2137
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2137 bytes programmed.
+Flash Verify Done: 2137 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(127): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(224): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2138
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2138 bytes programmed.
+Flash Verify Done: 2138 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(230): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2155
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2155 bytes programmed.
+Flash Verify Done: 2155 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(230): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2155
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2155 bytes programmed.
+Flash Verify Done: 2155 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(230): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2173
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2173 bytes programmed.
+Flash Verify Done: 2173 bytes verified.
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2173 bytes programmed.
+Flash Verify Done: 2173 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(230): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=66.1 xdata=0 code=2173
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2173 bytes programmed.
+Flash Verify Done: 2173 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(229): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=64.1 xdata=0 code=2174
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2174 bytes programmed.
+Flash Verify Done: 2174 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+linking...
+Program Size: data=64.1 xdata=0 code=2174
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 0 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2174 bytes programmed.
+Flash Verify Done: 2174 bytes verified.
+Build target 'N76E_LORA_TRANSMIT'
+compiling main.c...
+CODE\MAIN.C(129): warning C280: 'frequency': unreferenced local variable
+CODE\MAIN.C(229): warning C280: 'frequency': unreferenced local variable
+linking...
+Program Size: data=64.1 xdata=0 code=2180
+".\Output\N76E_LORA_TRANSMIT" - 0 Error(s), 2 Warning(s).
+Load "C:\\Users\\httu\\Documents\\N76E003\\N76E_LORA_TRANSMIT\\Output\\N76E_LORA_TRANSMIT" 
+Flash Erase Done.
+Flash Write Done: 2180 bytes programmed.
+Flash Verify Done: 2180 bytes verified.
