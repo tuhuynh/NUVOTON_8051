@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 1   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE DELAY
@@ -62,7 +62,7 @@ line level    source
   45   2              TL0 = LOBYTE(TIMER_DIV12_VALUE_1ms);            //Find  define in "Function_define.h" "TIMER VALUE"
   46   2              TH0 = HIBYTE(TIMER_DIV12_VALUE_1ms);
   47   2              while (TF0 != 1);                               //Check Timer0 Time-Out Flag
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 2   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 2   
 
   48   2              clr_TF0;
   49   2              u32CNT --;
@@ -126,7 +126,7 @@ line level    source
  107   1          while (u32CNT != 0)
  108   1          {
  109   2              RL3 = LOBYTE(TIMER_DIV4_VALUE_10us); //Find  define in "Function_define.h" "TIMER VALUE"
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 3   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 3   
 
  110   2              RH3 = HIBYTE(TIMER_DIV4_VALUE_10us);
  111   2              while ((T3CON&SET_BIT4) != SET_BIT4);           //Check Timer3 Time-Out Flag
@@ -135,7 +135,7 @@ line level    source
  114   2          }
  115   1          clr_TR3;                                            //Stop Timer3
  116   1      }
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 4   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -199,7 +199,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 36
 004A 22                RET     
              ; FUNCTION _Timer0_Delay100us (END)
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 5   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 5   
 
 
              ; FUNCTION _Timer0_Delay1ms (BEGIN)
@@ -263,7 +263,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _Timer0_Delay1ms (END)
 
              ; FUNCTION _Timer1_Delay10ms (BEGIN)
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 6   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 6   
 
                                            ; SOURCE LINE # 55
 0000 8F00        R     MOV     u32CNT+03H,R7
@@ -327,7 +327,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _Timer2_Delay500us (BEGIN)
                                            ; SOURCE LINE # 71
 0000 8F00        R     MOV     u32CNT+03H,R7
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 7   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 7   
 
 0002 8E00        R     MOV     u32CNT+02H,R6
 0004 8D00        R     MOV     u32CNT+01H,R5
@@ -391,7 +391,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _Timer3_Delay100ms (BEGIN)
                                            ; SOURCE LINE # 88
 0000 8F00        R     MOV     u32CNT+03H,R7
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 8   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 8   
 
 0002 8E00        R     MOV     u32CNT+02H,R6
 0004 8D00        R     MOV     u32CNT+01H,R5
@@ -455,7 +455,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0002 8E00        R     MOV     u32CNT+02H,R6
 0004 8D00        R     MOV     u32CNT+01H,R5
 0006 8C00        R     MOV     u32CNT,R4
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 9   
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 9   
 
                                            ; SOURCE LINE # 104
                                            ; SOURCE LINE # 105
@@ -519,7 +519,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----      24
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.01   DELAY                                                                 07/09/2018 09:06:58 PAGE 10  
+C51 COMPILER V9.01   DELAY                                                                 07/10/2018 17:31:01 PAGE 10  
 
    BIT SIZE         =      1    ----
 END OF MODULE INFORMATION.

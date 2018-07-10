@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   49   1              {
   50   2               beginPacket(0);
   51   2               
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 2   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 2   
 
   52   2               loraWrite("HELLO",5);
   53   2               
@@ -126,7 +126,7 @@ line level    source
  111   2        }
  112   1      
  113   1        // write data
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 3   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 3   
 
  114   1        for (i = 0; i < size; i++) {
  115   2          writeRegister(REG_FIFO, buffer[i]);
@@ -190,7 +190,7 @@ line level    source
  172   1                      LORA_SS=1;
  173   1                      readvalue=SPDR;
  174   1                      return readvalue;
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 4   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 4   
 
  175   1      }
  176          
@@ -254,7 +254,7 @@ line level    source
  234   1        //writeRegister(REG_FRF_MSB, (uint8_t)(frf >> 16));
  235   1        //writeRegister(REG_FRF_MID, (uint8_t)(frf >> 8));
  236   1        //writeRegister(REG_FRF_LSB, (uint8_t)(frf >> 0));
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 5   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 5   
 
  237   1        writeRegister(REG_FRF_LSB,0x0);
  238   1        writeRegister(REG_FRF_MID,0x40);
@@ -318,7 +318,7 @@ line level    source
  295   1      }
  296          
  297          void explicitHeaderMode()
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 6   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 6   
 
  298          {
  299   1         writeRegister(REG_MODEM_CONFIG_1, readRegister(REG_MODEM_CONFIG_1) & 0xfe);
@@ -338,7 +338,7 @@ line level    source
  313          {
  314   1        writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_SLEEP);
  315   1      }
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 7   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -402,7 +402,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0051 7FB8              MOV     R7,#0B8H
 0053 7E0B              MOV     R6,#0BH
 0055 7D00              MOV     R5,#00H
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 8   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 8   
 
 0057 7C00              MOV     R4,#00H
 0059 120000      E     LCALL   _Timer0_Delay1ms
@@ -466,7 +466,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0008 7C00              MOV     R4,#00H
 000A 120000      E     LCALL   _Timer0_Delay1ms
                                            ; SOURCE LINE # 92
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 9   
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 9   
 
 000D D293              SETB    P13
                                            ; SOURCE LINE # 93
@@ -530,7 +530,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0044 0500        R     INC     i
 0046 80E9              SJMP    ?C0009
 0048         ?C0010:
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 10  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 10  
 
                                            ; SOURCE LINE # 119
 0048 E500        R     MOV     A,size
@@ -594,7 +594,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0040 7D04              MOV     R5,#04H
 0042 7F26              MOV     R7,#026H
 0044 120000      R     LCALL   _writeRegister
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 11  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 11  
 
                                            ; SOURCE LINE # 145
 0047 7F0E              MOV     R7,#0EH
@@ -658,7 +658,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 173
 0030 AEF5              MOV     R6,SPDR
                                            ; SOURCE LINE # 174
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 12  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 12  
 
 0032 AF06              MOV     R7,AR6
                                            ; SOURCE LINE # 175
@@ -722,7 +722,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 209
 0012 7E00              MOV     R6,#00H
 0014 E500        R     MOV     A,currentLength+01H
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 13  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 13  
 
 0016 2500        R     ADD     A,size
 0018 FF                MOV     R7,A
@@ -786,7 +786,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 FD                MOV     R5,A
 000A 7F08              MOV     R7,#08H
 000C 120000      R     LCALL   _writeRegister
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 14  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 14  
 
                                            ; SOURCE LINE # 238
 000F 7D40              MOV     R5,#040H
@@ -850,7 +850,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 6005              JZ      ?C0038
                                            ; SOURCE LINE # 270
 000D 120000      R     LCALL   implicitHeaderMode
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 15  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 15  
 
                                            ; SOURCE LINE # 271
 0010 8003              SJMP    ?C0039
@@ -914,7 +914,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 020000      R     LJMP    _writeRegister
              ; FUNCTION explicitHeaderMode (END)
 
-C51 COMPILER V9.01   MAIN                                                                  07/10/2018 16:01:42 PAGE 16  
+C51 COMPILER V9.01   MAIN                                                                  07/10/2018 17:31:00 PAGE 16  
 
              ; FUNCTION implicitHeaderMode (BEGIN)
                                            ; SOURCE LINE # 302

@@ -172,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>16</ColumnNumber>
+      <ColumnNumber>61</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>44</TopLine>
-      <CurrentLine>75</CurrentLine>
+      <TopLine>29</TopLine>
+      <CurrentLine>53</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Code\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -246,7 +246,7 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\httu\Documents\N76E003\INCLUDE\FUNCTION_DEFINE.H</PathWithFilename>
+    <PathWithFilename>C:\Users\httu\Documents\MCS51\INCLUDE\FUNCTION_DEFINE.H</PathWithFilename>
     <TopLine>79</TopLine>
     <CurrentLine>89</CurrentLine>
     <Constant>0</Constant>
@@ -1616,9 +1616,9 @@
       <Documents>
         <Doc>
           <Name>.\Code\main.c</Name>
-          <ColumnNumber>16</ColumnNumber>
-          <TopLine>44</TopLine>
-          <CurrentLine>75</CurrentLine>
+          <ColumnNumber>61</ColumnNumber>
+          <TopLine>29</TopLine>
+          <CurrentLine>53</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\INCLUDE\FUNCTION_DEFINE.H</Name>

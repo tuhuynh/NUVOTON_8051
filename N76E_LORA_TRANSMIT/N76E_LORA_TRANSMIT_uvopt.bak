@@ -43,7 +43,7 @@
         <PageWidth>120</PageWidth>
         <PageLength>65</PageLength>
         <TabStop>8</TabStop>
-        <ListingPath>.\</ListingPath>
+        <ListingPath>.\Output\</ListingPath>
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -54,7 +54,7 @@
         <AsmSymb>1</AsmSymb>
         <AsmXref>0</AsmXref>
         <CCond>1</CCond>
-        <CCode>0</CCode>
+        <CCode>1</CCode>
         <CListInc>0</CListInc>
         <CSymb>0</CSymb>
         <LinkerCodeListing>0</LinkerCodeListing>
@@ -172,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>46</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>31</TopLine>
-      <CurrentLine>53</CurrentLine>
+      <TopLine>44</TopLine>
+      <CurrentLine>75</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Code\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -1616,9 +1616,9 @@
       <Documents>
         <Doc>
           <Name>.\Code\main.c</Name>
-          <ColumnNumber>46</ColumnNumber>
-          <TopLine>31</TopLine>
-          <CurrentLine>53</CurrentLine>
+          <ColumnNumber>16</ColumnNumber>
+          <TopLine>44</TopLine>
+          <CurrentLine>75</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\INCLUDE\FUNCTION_DEFINE.H</Name>

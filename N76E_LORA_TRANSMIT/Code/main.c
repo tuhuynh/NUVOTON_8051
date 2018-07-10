@@ -19,6 +19,7 @@
 typedef uint32_t uint64_t[2];
 int _implicitHeaderMode = 0;
 /////prototype of function
+
 void SPI_Initial(void);
 uint8_t readRegister(uint8_t address);
 void writeRegister(uint8_t address, uint8_t value);
@@ -37,7 +38,6 @@ void loraIdle();
 ///////end of prototype ////////////////////
 void main()
 {	uint8_t value=0;
-	uint8_t st[10]={'H','E','L','L','O'};
  	Set_All_GPIO_Quasi_Mode;
 	P12_Quasi_Mode;	  //led 1
 	P13_Quasi_Mode;	//led 2	
@@ -48,12 +48,9 @@ void main()
 	while(1)
 	{
 	 beginPacket(0);
-	 
-	 loraWrite("HELLO",5);
-	 
-	 endPacket();
-	 
-	 Timer0_Delay1ms(3000);	
+	 loraWrite("HELLO",5); //test with HELLO	 
+	 endPacket();								 
+	 Timer0_Delay1ms(3000);	//flash led with duration 3 seconds.
 	 LED1=LED1^0x1;
 	}
 
